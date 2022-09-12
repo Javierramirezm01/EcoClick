@@ -24,12 +24,19 @@
       <li><a href="adminrecoleccion.php">Recoleccion</a> </li>
       <li><a href="add_ubicacion.php">Ubicaciones</a> </li>
       <li><a href="add_residuo.php">Residuos</a> </li>
+      <li><a href="solicitudes.php">Solicitudes</a> </li>
    </ul>
   </li>
   <li>
     <a href="add_recoleccion.php" >
       <i class="glyphicon glyphicon-leaf"></i>
       <span>Recolección</span>
+    </a>
+  </li>
+  <li>
+    <a href="add_solicitud.php" >
+      <i class="glyphicon glyphicon-time"></i>
+      <span>Registrar solicitudes</span>
     </a>
   </li>
   <li>

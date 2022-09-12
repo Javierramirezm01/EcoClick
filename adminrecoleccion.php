@@ -32,7 +32,7 @@
                 <th class="text-center" style="width: 20%;"> Peso </th>
                 <th class="text-center" style="width: 20%;"> Usuario </th>
                 <th class="text-center" style="width: 20%;"> Observación </th>
-				 <th class="text-center" style="width: 20%;"> Fecha registro </th>
+				 <th class="text-center" style="width: 10%;"> Fecha registro </th>
                 <th class="text-center" style="width: 100px;"> Acciones </th>
               </tr>
             </thead>
@@ -44,7 +44,7 @@
                 <td class="text-center"> <?php echo remove_junk($reco['peso']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($reco['usuario']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($reco['observaciones']); ?></td>
-                <td class="text-center"><?php echo read_date($reco['fecha']); ?> </td>
+                <td class="text-center"><?php echo remove_junk(ucwords($reco['fecha']))?></td>
                 <td class="text-center">
                   <div class="btn-group">
                     <a href="edit_recoleccion.php?id=<?php echo (int)$paci['id'];?>" class="btn btn-info btn-xs"  title="Editar" data-toggle="tooltip">

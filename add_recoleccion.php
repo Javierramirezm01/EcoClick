@@ -93,21 +93,21 @@
                 </div>
 				 </div>
 			  </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
-                   <input type="text" class="form-control" id="sug_input" name="usuario" value="<?php echo remove_junk($user['name']); ?>" readonly>
-                   </div>
-				 </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="sug_input" name="usuario" value="<?php echo remove_junk($user['name']); ?>" readonly>
+            </div>
+				  </div>
 			  </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
                 <input type="text" class="form-control" name="observaciones" placeholder="Observacion" required>
-                </div>
-				 </div>
+            </div>
+				  </div>
 			  </div>
-              <button type="submit" name="add_recoleccion" class="btn btn-danger">Registrar Recolección</button>
+              <button type="submit" name="add_recoleccion" class="btn btn-primary">Registrar Recolección</button>
           </form>
          </div>
         </div>

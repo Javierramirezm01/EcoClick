@@ -7,7 +7,7 @@
 <div class="text-center">
   <br/>
   <br/>
-  <img src="uploads\products\logoPrincipal.png" width="500" height="250" >
+  <img src="uploads\products\logoPrincipal.png"/>
 </div>
 <div class="login-page">
     <div class="text-center">
