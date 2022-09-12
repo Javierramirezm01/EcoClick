@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-08-2022 a las 15:24:25
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 8.0.8
+-- Tiempo de generación: 12-09-2022 a las 18:45:13
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,7 +48,47 @@ INSERT INTO `recoleccionresiduos` (`id`, `area`, `tipo_residuo`, `peso`, `usuari
 (22, 'Contabilidad', 'Ordinario', 1, 'Admin Users', 'Sin novedad.', '2022-08-08'),
 (23, 'Contabilidad', 'Ordinario', 1, 'Admin Users', 'Sin novedad.', '2022-08-08'),
 (24, 'Contabilidad', 'Ordinario', 1, 'Admin Users', 'Sin novedad.', '2022-08-08'),
-(25, 'Sistemas', 'Reciclable', 70, 'Admin Users', 'Sin novedad.', '2022-08-09');
+(25, 'Sistemas', 'Reciclable', 70, 'Admin Users', 'Sin novedad.', '2022-08-09'),
+(26, 'Gestion Humana', 'Reciclable', 70, 'Admin Users', 'Sin novedad.', '2022-09-12'),
+(27, 'Gestion Humana', 'Reciclables', 20, 'Admin Users', 'Sin novedad.', '2022-09-12');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `residuos`
+--
+
+CREATE TABLE `residuos` (
+  `id` int(11) NOT NULL,
+  `residuo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `residuos`
+--
+
+INSERT INTO `residuos` (`id`, `residuo`) VALUES
+(1, 'Reciclables'),
+(3, 'Ordinarios');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ubicacion`
+--
+
+CREATE TABLE `ubicacion` (
+  `id` int(11) NOT NULL,
+  `ubicacion` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ubicacion`
+--
+
+INSERT INTO `ubicacion` (`id`, `ubicacion`) VALUES
+(2, 'Gestion Humana'),
+(3, 'Gestion Documental');
 
 -- --------------------------------------------------------
 
@@ -72,7 +112,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`) VALUES
-(1, 'Admin Users', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'pzg9wa7o1.jpg', 1, '2022-08-09 14:53:57'),
+(1, 'Admin Users', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'e028ne01.png', 1, '2022-09-12 17:42:26'),
 (2, 'Special User', 'special', 'ba36b97a41e7faf742ab09bf88405ac04f99599a', 2, 'no_image.jpg', 1, '2017-06-16 07:11:26'),
 (3, 'Default User', 'user', '12dea96fec20593566ab75692c9949596833adc9', 3, 'no_image.jpg', 1, '2017-06-16 07:11:03');
 
@@ -109,6 +149,18 @@ ALTER TABLE `recoleccionresiduos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `residuos`
+--
+ALTER TABLE `residuos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `ubicacion`
+--
+ALTER TABLE `ubicacion`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -131,7 +183,19 @@ ALTER TABLE `user_groups`
 -- AUTO_INCREMENT de la tabla `recoleccionresiduos`
 --
 ALTER TABLE `recoleccionresiduos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de la tabla `residuos`
+--
+ALTER TABLE `residuos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `ubicacion`
+--
+ALTER TABLE `ubicacion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
