@@ -6,6 +6,7 @@
   $all_estados = find_all('recoleccionresiduos');
   $all_usuarios = find_all('users');
   $all_ubicacion= find_all('ubicacion');
+  $all_residuos= find_all('residuos');
 ?>
 <?php
  if(isset($_POST['add_recoleccion'])){
@@ -63,7 +64,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <select class="form-control" name="area">
-                      <option value="">Seleccione Ubicacion</option>
+                      <option value="">Seleccione Ubicación</option>
                     <?php  foreach ($all_ubicacion as $ubi): ?>
                       <option value="<?php echo (string)$ubi['ubicacion'] ?>">
                         <?php echo $ubi['ubicacion'] ?></option>
@@ -75,10 +76,16 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
-                <input type="text" class="form-control" name="tipo_residuo" placeholder="Tipo de residuo" required>
-                </div>
-				 </div>
-			  </div>
+                    <select class="form-control" name="tipo_residuo">
+                      <option value="">Seleccione Tipo de Residuo</option>
+                    <?php  foreach ($all_residuos as $resi): ?>
+                      <option value="<?php echo (string)$resi['residuo'] ?>">
+                        <?php echo $resi['residuo'] ?></option>
+                    <?php endforeach; ?>
+                    </select>
+                  </div>
+				       </div>
+			        </div>
 			  <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
@@ -100,7 +107,7 @@
                 </div>
 				 </div>
 			  </div>
-              <button type="submit" name="add_recoleccion" class="btn btn-danger">Registrar Recoleccion</button>
+              <button type="submit" name="add_recoleccion" class="btn btn-danger">Registrar Recolección</button>
           </form>
          </div>
         </div>

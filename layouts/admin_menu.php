@@ -16,20 +16,21 @@
    </ul>
   </li>
   <li>
-    <a href="add_recoleccion.php" >
-      <i class="glyphicon glyphicon-leaf"></i>
-      <span>Recoleccion</span>
-    </a>
-  </li>
-  <li>
     <a href="#" class="submenu-toggle">
       <i class="glyphicon glyphicon-th-list"></i>
-      <span>Administracion</span>
+      <span>Administración</span>
     </a>
     <ul class="nav submenu">
-      <li><a href="adminrecoleccion.php">recoleccion</a> </li>
-      <li><a href="add_ubicacion.php">ubicaciones</a> </li>
+      <li><a href="adminrecoleccion.php">Recoleccion</a> </li>
+      <li><a href="add_ubicacion.php">Ubicaciones</a> </li>
+      <li><a href="add_residuo.php">Residuos</a> </li>
    </ul>
+  </li>
+  <li>
+    <a href="add_recoleccion.php" >
+      <i class="glyphicon glyphicon-leaf"></i>
+      <span>Recolección</span>
+    </a>
   </li>
   <li>
     <a href="informes.php" >

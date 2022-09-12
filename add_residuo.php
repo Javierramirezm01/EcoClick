@@ -1,29 +1,29 @@
 <?php
-  $page_title = 'Lista de ubicaciones';
+  $page_title = 'Lista de residuos';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
   page_require_level(1);
   
-  $all_ubicaciones = find_all('ubicacion')
+  $all_residuos = find_all('residuos')
 ?>
 <?php
- if(isset($_POST['add_ub'])){
-   $req_field = array('ubicacion');
+ if(isset($_POST['add_re'])){
+   $req_field = array('residuo');
    validate_fields($req_field);
-   $ub_name = remove_junk($db->escape($_POST['ubicacion']));
+   $ub_name = remove_junk($db->escape($_POST['residuo']));
    if(empty($errors)){
-      $sql  = "INSERT INTO ubicacion (ubicacion)";
+      $sql  = "INSERT INTO residuos (residuo)";
       $sql .= " VALUES ('{$ub_name}')";
       if($db->query($sql)){
-        $session->msg("s", "Ubicación agregada exitosamente.");
-        redirect('add_ubicacion.php',false);
+        $session->msg("s", "Residuo agregado exitosamente.");
+        redirect('add_residuo.php',false);
       } else {
         $session->msg("d", "Lo siento, registro falló");
-        redirect('add_ubicacion.php',false);
+        redirect('add_residuo.php',false);
       }
    } else {
      $session->msg("d", $errors);
-     redirect('add_ubicacion.php',false);
+     redirect('add_residuo.php',false);
    }
  }
 ?>
@@ -40,15 +40,15 @@
         <div class="panel-heading">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
-            <span>Agregar Ubicación</span>
+            <span>Agregar Residuo</span>
          </strong>
         </div>
         <div class="panel-body">
-          <form method="post" action="add_ubicacion.php">
+          <form method="post" action="add_residuo.php">
             <div class="form-group">
-                <input type="text" class="form-control" name="ubicacion" placeholder="Nombre de la Ubicación" required>
+                <input type="text" class="form-control" name="residuo" placeholder="Tipo de residuo" required>
             </div>
-            <button type="submit" name="add_ub" class="btn btn-primary">Agregar ubicación</button>
+            <button type="submit" name="add_re" class="btn btn-primary">Agregar Residuo</button>
         </form>
         </div>
       </div>
@@ -58,7 +58,7 @@
       <div class="panel-heading">
         <strong>
           <span class="glyphicon glyphicon-th"></span>
-          <span>Lista de ubicaciones</span>
+          <span>Lista de Residuos</span>
        </strong>
       </div>
         <div class="panel-body">
@@ -66,21 +66,21 @@
             <thead>
                 <tr>
                     <th class="text-center" style="width: 50px;">#</th>
-                    <th>Ubicaciones</th>
+                    <th>Residuos</th>
                     <th class="text-center" style="width: 100px;">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-              <?php foreach ($all_ubicaciones as $ubi):?>
+              <?php foreach ($all_residuos as $resi):?>
                 <tr>
                     <td class="text-center"><?php echo count_id();?></td>
-                    <td><?php echo remove_junk(ucfirst($ubi['ubicacion'])); ?></td>
+                    <td><?php echo remove_junk(ucfirst($resi['residuo'])); ?></td>
                     <td class="text-center">
                       <div class="btn-group">
-                        <a href="edit_ubicacion.php?id=<?php echo (int)$ubi['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                        <a href="edit_residuo.php?id=<?php echo (int)$resi['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
                           <span class="glyphicon glyphicon-edit"></span>
                         </a>
-                        <a href="delete_ubicacion.php?id=<?php echo (int)$ubi['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
+                        <a href="delete_residuo.php?id=<?php echo (int)$resi['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
                           <span class="glyphicon glyphicon-trash"></span>
                         </a>
                       </div>
