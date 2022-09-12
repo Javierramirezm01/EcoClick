@@ -1,14 +1,19 @@
 <?php
-  $page_title = 'Recoleeción de residuos';
+  $page_title = 'Actualizacion de recoleccion';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
   page_require_level(1);
+  $recoleccion = find_by_id('recoleccionresiduos',(int)$_GET['id']);
   $all_estados = find_all('recoleccionresiduos');
-  $all_usuarios = find_all('users');
   $all_ubicacion= find_all('ubicacion');
+  $all_usuarios = find_all('users');
+  if(!$recoleccion){
+    $session->msg("d","Missing recoleccion id.");
+    redirect('adminrecoleccion.php');
+  }
 ?>
 <?php
- if(isset($_POST['add_recoleccion'])){
+ if(isset($_POST['edit_recoleccion'])){
    $req_fields = array('area','tipo_residuo','peso','usuario','observaciones' );
    validate_fields($req_fields);
    if(empty($errors)){
@@ -19,24 +24,23 @@
      $r_observacion  = remove_junk($db->escape($_POST['observaciones']));
      $r_date    = make_date('d-m-Y');
     
-	 
-     $query  = "INSERT INTO recoleccionresiduos (";
-     $query .=" area,tipo_residuo,peso,usuario,observaciones,fecha";
-     $query .=") VALUES (";
-     $query .=" '{$r_area}', '{$r_residuo }', '{$r_peso}', '{$r_usuario}', '{$r_observacion}', '{$r_date}'";
-     $query .=")";
-     if($db->query($query)){
-       $session->msg('s',"Recolección agregada exitosamente. ");
-       redirect('add_recoleccion.php', false);
-     } else {
-       $session->msg('d',' Lo siento, registro falló.');
-       redirect('add_recoleccion.php', false);
-     }
+     $query   = "UPDATE recoleccionresiduos SET";
+     $query  .=" area ='{$r_area}', tipo_residuo ='{$r_residuo}',";
+     $query  .=" peso ='{$r_peso}', usuario ='{$r_usuario}', observaciones ='{$r_observacion}',fecha='{$r_date}'";
+     $query  .=" WHERE id ='{$recoleccion['id']}'";
+     $result = $db->query($query);
+             if($result && $db->affected_rows() === 1){
+               $session->msg('s',"La recoleccion ha sido actualizado. ");
+               redirect('adminrecoleccion.php', false);
+             } else {
+               $session->msg('d',' Lo siento, actualización falló.');
+               redirect('edit_recoleccion.php?id='.$recoleccion['id'], false);
+             }
 
-   } else{
+ } else{
      $session->msg("d", $errors);
-     redirect('add_recoleccion.php',false);
-   }
+     redirect('edit_recoleccion.php?id='.$recoleccion['id'], false);
+ }
 
  }
 
@@ -58,7 +62,7 @@
         </div>
         <div class="panel-body">
          <div class="col-md-12">
-          <form method="post" action="add_recoleccion.php" class="clearfix">
+          <form method="post" action="edit_recoleccion.php?id=<?php echo (int)$recoleccion['id'] ?>" class="clearfix">
           <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
@@ -70,8 +74,8 @@
                     <?php endforeach; ?>
                     </select>
                   </div>
-				       </div>
-			        </div>
+				 </div>
+			  </div>
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
@@ -100,7 +104,7 @@
                 </div>
 				 </div>
 			  </div>
-              <button type="submit" name="add_recoleccion" class="btn btn-danger">Registrar Recoleccion</button>
+              <button type="submit" name="edit_recoleccion" class="btn btn-danger">Actualizar Recoleccion</button>
           </form>
          </div>
         </div>

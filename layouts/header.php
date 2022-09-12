@@ -13,6 +13,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
     <link rel="stylesheet" href="libs/css/main.css" />
+
+    <style>
+      #footer {
+      position: relative;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto auto 0; /* position to bottom and center */
+      z-index: 1000;
+      }
+    </style>
   </head>
   <body>
   <?php  if ($session->isUserLoggedIn(true)): ?>

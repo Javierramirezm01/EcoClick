@@ -8,7 +8,6 @@
  $c_user          = count_by_id('users');
 ?>
 <?php include_once('layouts/header.php'); ?>
-
 <div class="row">
    <div class="col-md-6">
      <?php echo display_msg($msg); ?>
@@ -27,9 +26,5 @@
        </div>
     </div>
 </div>
-
 </div>
-
-
-
 <?php include_once('layouts/footer.php'); ?>

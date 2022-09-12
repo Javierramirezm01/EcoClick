@@ -17,27 +17,24 @@
   </li>
   <li>
     <a href="add_recoleccion.php" >
-      <i class="glyphicon glyphicon-indent-left"></i>
+      <i class="glyphicon glyphicon-leaf"></i>
       <span>Recoleccion</span>
     </a>
   </li>
-  
   <li>
-    <a href="adminrecoleccion.php" >
-      <i class="glyphicon glyphicon-indent-left"></i>
-      <span>Admin Recoleccion</span>
+    <a href="#" class="submenu-toggle">
+      <i class="glyphicon glyphicon-th-list"></i>
+      <span>Administracion</span>
     </a>
+    <ul class="nav submenu">
+      <li><a href="adminrecoleccion.php">recoleccion</a> </li>
+      <li><a href="add_ubicacion.php">ubicaciones</a> </li>
+   </ul>
   </li>
   <li>
     <a href="informes.php" >
       <i class="glyphicon glyphicon-indent-left"></i>
       <span>Informes</span>
-    </a>
-  </li>
-  <li>
-    <a href="datos.php" >
-      <i class="glyphicon glyphicon-picture"></i>
-      <span>Analisis de datos</span>
     </a>
   </li>
 </ul>

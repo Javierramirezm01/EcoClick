@@ -5,12 +5,14 @@
 ?>
 
 <div class="text-center">
-<br/>
-<img src="uploads\products\logo.jpeg">
-  </div>
+  <br/>
+  <br/>
+  <img src="uploads\products\logoPrincipal.png" width="500" height="250" >
+</div>
 <div class="login-page">
     <div class="text-center">
-       <h1>Bienvenido</h1>
+       <h3>Bienvenido a EcoClick sistema ambiental</h3>
+      <br/>
        <p>Iniciar sesión </p>
      </div>
      <?php echo display_msg($msg); ?>
