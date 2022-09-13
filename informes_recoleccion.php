@@ -15,8 +15,9 @@
       <div class="panel-heading">
       </div>
       <div class="panel-body">
-          <form class="clearfix" method="post" action="informes_reports.php">
+          <form class="clearfix" method="post" action="informes_reports_recoleccion.php">
             <div class="form-group">
+              <h3>Informe de recolección de residuos</h3>
               <label class="form-label">Rango de fechas</label>
                 <div class="input-group">
                   <input type="text" class="datepicker form-control" name="start-date" placeholder="Desde">
@@ -25,7 +26,7 @@
                 </div>
             </div>
             <div class="form-group">
-                 <button type="submit" name="submit" class="btn btn-primary">Generar Reporte</button>
+                 <button type="submit" name="submit" class="btn btn-success">Generar Reporte</button>
             </div>
           </form>
       </div>

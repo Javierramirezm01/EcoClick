@@ -4,6 +4,7 @@ $results = '';
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
    page_require_level(1);
+
 ?>
 <?php
   if(isset($_POST['submit'])){
@@ -15,20 +16,26 @@ $results = '';
       $results      = find_by_report($start_date,$end_date);
     else:
       $session->msg("d", $errors);
-      redirect('informes.php', false);
+      redirect('informes_recoleccion.php', false);
     endif;
   } else {
     $session->msg("d", "Select dates");
-    redirect('informes.php', false);
+    redirect('informes_recoleccion.php', false);
   }
 ?>
 <?php include_once('layouts/header.php'); ?> 
+<?php include_once('layouts/footer.php'); ?>
+
 <!doctype html>
 <html lang="en-US">
  <head>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    <title>Reporte de recolección</title>
    <style>
+      .sidebar {
+        
+        display:none;
+      }
    </style>
 </head>
 <body>
@@ -46,6 +53,7 @@ $results = '';
             <span>Recoleccion residuos</span>
             <?php if(isset($start_date)){ echo $start_date;}?> a <?php if(isset($end_date)){echo $end_date;}?>
          </strong>
+         <a href="home.php" class="btn btn-info pull-right">Volver a menu</a>
         </div>
 
         </div>
@@ -53,23 +61,25 @@ $results = '';
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th class="text-center" style="width: 20%;"> Área </th>
-                <th class="text-center" style="width: 20%;"> Tipo de residuo </th>
-                <th class="text-center" style="width: 20%;"> Peso </th>
-                <th class="text-center" style="width: 20%;"> Usuario </th>
-                <th class="text-center" style="width: 20%;"> Observación </th>
-				 <th class="text-center" style="width: 20%;"> Fecha registro </th>
+                <th class="text-center" style="width: 6%;">#</th>
+                <th class="text-center" style="width: 10%;"> Área </th>
+                <th class="text-center" style="width: 15%;"> Tipo de residuo </th>
+                <th class="text-center" style="width: 8%;"> Peso </th>
+                <th class="text-center" style="width: 10%;"> Usuario </th>
+                <th class="text-center" style="width: 30%;"> Observación </th>
+				        <th class="text-center" style="width: 10%;"> Fecha registro </th>
               </tr>
             </thead>
             <tbody>
               <?php foreach ($results as $result):?>
               <tr>
+                <td class="text-center"><?php echo count_id();?></td>
                 <td class="text-center"> <?php echo remove_junk($result['area']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($result['tipo_residuo']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($result['peso']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($result['usuario']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($result['observaciones']); ?></td>
-                <td class="text-center"><?php echo read_date($result['fecha']); ?> </td>
+                <td class="text-center"><?php echo remove_junk(ucwords($result['fecha']))?></td>
               </tr>
              <?php endforeach; ?>
             </tbody>
@@ -81,10 +91,10 @@ $results = '';
   <?php
     else:
         $session->msg("d", "No se encontraron registros. ");
-        redirect('informes.php', false);
+        redirect('informes_recoleccion.php', false);
      endif;
   ?>
 </body>
 </html>
-<?php if(isset($db)) { $db->db_disconnect(); } ?>
-<?php include_once('layouts/footer.php'); ?>
+<?php if(isset($db)) { $db->db_disconnect(); }?>
+

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-09-2022 a las 18:45:13
+-- Tiempo de generación: 13-09-2022 a las 23:02:52
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -50,7 +50,9 @@ INSERT INTO `recoleccionresiduos` (`id`, `area`, `tipo_residuo`, `peso`, `usuari
 (24, 'Contabilidad', 'Ordinario', 1, 'Admin Users', 'Sin novedad.', '2022-08-08'),
 (25, 'Sistemas', 'Reciclable', 70, 'Admin Users', 'Sin novedad.', '2022-08-09'),
 (26, 'Gestion Humana', 'Reciclable', 70, 'Admin Users', 'Sin novedad.', '2022-09-12'),
-(27, 'Gestion Humana', 'Reciclables', 20, 'Admin Users', 'Sin novedad.', '2022-09-12');
+(27, 'Gestion Humana', 'Reciclables', 20, 'Admin Users', 'Sin novedad.', '2022-09-12'),
+(28, 'Gestion Humana', 'Ordinarios', 10, 'Admin Users', 'Sin novedad.', '2022-09-12'),
+(29, 'Contabilidad', 'No aprovechables', 50, 'Admin Users', 'Solo se recolecto el 50%.', '2022-09-13');
 
 -- --------------------------------------------------------
 
@@ -69,7 +71,57 @@ CREATE TABLE `residuos` (
 
 INSERT INTO `residuos` (`id`, `residuo`) VALUES
 (1, 'Reciclables'),
-(3, 'Ordinarios');
+(3, 'No aprovechables');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `solicitudes`
+--
+
+CREATE TABLE `solicitudes` (
+  `id` int(11) NOT NULL,
+  `tipo_solicitud` varchar(100) NOT NULL,
+  `area` varchar(100) NOT NULL,
+  `usuario` varchar(100) NOT NULL,
+  `contacto` varchar(50) NOT NULL,
+  `descripcion` varchar(200) NOT NULL,
+  `prioridad` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `estado` int(11) NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `solicitudes`
+--
+
+INSERT INTO `solicitudes` (`id`, `tipo_solicitud`, `area`, `usuario`, `contacto`, `descripcion`, `prioridad`, `cantidad`, `estado`, `fecha`) VALUES
+(5, 'Capacitacion', 'Gestion Documental', 'Admin Users', '3195770216', 'Se solcita capacitacion.', 2, 1, 1, '2022-09-13'),
+(7, 'Dotación de canecas', 'Sistemas', 'Admin Users', '3195770216', 'Se solicita canecas color verde.', 2, 2, 0, '2022-09-13'),
+(8, 'Recolección de residuos', 'Contabilidad', 'Admin Users', '3847300', 'Se solicita la recoleccion de residuos no aprovechables.', 1, 1, 0, '2022-09-13'),
+(9, 'Inspección', 'Gestion Humana', 'Admin Users', 'Ext 1010', 'Se solcita inspeccion.', 0, 1, 0, '2022-09-13');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tiposolicitud`
+--
+
+CREATE TABLE `tiposolicitud` (
+  `id` int(11) NOT NULL,
+  `tiposolicitud` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tiposolicitud`
+--
+
+INSERT INTO `tiposolicitud` (`id`, `tiposolicitud`) VALUES
+(0, 'Capacitación'),
+(0, 'Inspección'),
+(0, 'Dotación de canecas'),
+(0, 'Recolección de residuos');
 
 -- --------------------------------------------------------
 
@@ -88,7 +140,9 @@ CREATE TABLE `ubicacion` (
 
 INSERT INTO `ubicacion` (`id`, `ubicacion`) VALUES
 (2, 'Gestion Humana'),
-(3, 'Gestion Documental');
+(3, 'Gestion Documental'),
+(4, 'Sistemas'),
+(5, 'Contabilidad');
 
 -- --------------------------------------------------------
 
@@ -112,9 +166,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`) VALUES
-(1, 'Admin Users', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'e028ne01.png', 1, '2022-09-12 17:42:26'),
+(1, 'Admin Users', 'admin', '871b94bfd2bfe0c8b4bbf478eca8b535a18830e0', 1, 'e028ne01.png', 1, '2022-09-13 22:57:47'),
 (2, 'Special User', 'special', 'ba36b97a41e7faf742ab09bf88405ac04f99599a', 2, 'no_image.jpg', 1, '2017-06-16 07:11:26'),
-(3, 'Default User', 'user', '12dea96fec20593566ab75692c9949596833adc9', 3, 'no_image.jpg', 1, '2017-06-16 07:11:03');
+(3, 'Default User', 'user', '12dea96fec20593566ab75692c9949596833adc9', 3, 'no_image.jpg', 1, '2017-06-16 07:11:03'),
+(12, 'Javier Ramírez Monsalve ', 'jramirezm', '4252ae812b3f6ca195abcbbfb54f848e4d0e70a3', 1, 'no_image.jpg', 1, NULL),
+(13, 'Mateo Cortez Gomes', 'mcortezg', 'c1d6af216686394e9cf1661b7a33a5739f4bf79d', 1, 'no_image.jpg', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -155,6 +211,12 @@ ALTER TABLE `residuos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `solicitudes`
+--
+ALTER TABLE `solicitudes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `ubicacion`
 --
 ALTER TABLE `ubicacion`
@@ -183,7 +245,7 @@ ALTER TABLE `user_groups`
 -- AUTO_INCREMENT de la tabla `recoleccionresiduos`
 --
 ALTER TABLE `recoleccionresiduos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `residuos`
@@ -192,16 +254,22 @@ ALTER TABLE `residuos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `solicitudes`
+--
+ALTER TABLE `solicitudes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de la tabla `ubicacion`
 --
 ALTER TABLE `ubicacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `user_groups`

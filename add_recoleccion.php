@@ -107,7 +107,7 @@
             </div>
 				  </div>
 			  </div>
-              <button type="submit" name="add_recoleccion" class="btn btn-primary">Registrar Recolección</button>
+              <button type="submit" name="add_recoleccion" class="btn btn-success">Registrar Recolección</button>
           </form>
          </div>
         </div>

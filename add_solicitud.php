@@ -5,27 +5,28 @@
   page_require_level(1);
    $all_usuarios = find_all('users');
    $all_ubicacion = find_all('ubicacion');
-   $solicitud = find_all('solicitudes');
+   $all_tiposolicitud = find_all('tiposolicitud');
 ?>
 <?php
   if(isset($_POST['add_solicitud'])){
 
-   $req_fields = array('tiposolicitud','area','usuario','descripcion','prioridad','cantidad');
+   $req_fields = array('tiposolicitud','area','usuario', 'contacto','descripcion','prioridad','cantidad');
    validate_fields($req_fields);
 
    if(empty($errors)){
 		$tipo   = remove_junk($db->escape($_POST['tiposolicitud']));
         $area   = remove_junk($db->escape($_POST['area']));
         $usuario   = remove_junk($db->escape($_POST['usuario']));
+        $contacto   = remove_junk($db->escape($_POST['contacto']));
 	    $descripcion   = remove_junk($db->escape($_POST['descripcion']));
         $prioridad   = remove_junk($db->escape($_POST['prioridad']));
 		$cantidad   = remove_junk($db->escape($_POST['cantidad']));
         $s_date    = make_date('d-m-Y');
 
         $query = "INSERT INTO solicitudes (";
-        $query .="tipo_solicitud,area,usuario,descripcion,prioridad,cantidad,estado,fecha";
+        $query .="tipo_solicitud,area,usuario,contacto,descripcion,prioridad,cantidad,estado,fecha";
         $query .=") VALUES (";
-        $query .=" '{$tipo}', '{$area}', '{$usuario}', '{$descripcion}','{$prioridad
+        $query .=" '{$tipo}', '{$area}', '{$usuario}', '{$contacto}','{$descripcion}','{$prioridad
         }','{$cantidad}','0','{$s_date}'";
         $query .=")";
         if($db->query($query)){
@@ -58,13 +59,19 @@
       <div class="panel-body">
         <div class="col-md-6">
           <form method="post" action="add_solicitud.php">
-            <div class="form-group">
+          <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
-                    <input type="text" class="form-control" name="tiposolicitud" placeholder="Tipo de solicitud" required>
+                    <select class="form-control" name="tiposolicitud">
+                      <option value="">Seleccione tipo de solcitud</option>
+                    <?php  foreach ($all_tiposolicitud as $soli): ?>
+                      <option value="<?php echo (string)$soli['tiposolicitud'] ?>">
+                        <?php echo $soli['tiposolicitud'] ?></option>
+                    <?php endforeach; ?>
+                    </select>
                   </div>
-		        </div>
-            </div>
+				       </div>        
+             </div>
             <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
@@ -76,15 +83,22 @@
                     <?php endforeach; ?>
                     </select>
                   </div>
-				</div>        
-            </div>
+				       </div>        
+             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6">
                         <input type="text" class="form-control" id="sug_input" name="usuario" value="<?php echo remove_junk($user['name']); ?>" readonly>
                     </div>
-				</div>
-			</div>
+				         </div>
+			      </div>
+            <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" name="contacto" placeholder="contacto" required>
+                  </div>
+		           </div>
+             </div>
             <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
@@ -111,7 +125,7 @@
                   </div>
 		        </div>
             </div> 
-                <button type="submit" name="add_solicitud" class="btn btn-primary">Registrar solicitud</button>
+                <button type="submit" name="add_solicitud" class="btn btn-success">Registrar solicitud</button>
             </form>
         </div>
       </div>

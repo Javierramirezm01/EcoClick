@@ -22,9 +22,18 @@
     </a>
     <ul class="nav submenu">
       <li><a href="adminrecoleccion.php">Recoleccion</a> </li>
+      <li><a href="solicitudes.php">Solicitudes</a> </li>
+   </ul>
+  </li>
+  <li>
+    <a href="#" class="submenu-toggle">
+      <i class="glyphicon glyphicon-cog"></i>
+      <span>Configuracion</span>
+    </a>
+    <ul class="nav submenu">
       <li><a href="add_ubicacion.php">Ubicaciones</a> </li>
       <li><a href="add_residuo.php">Residuos</a> </li>
-      <li><a href="solicitudes.php">Solicitudes</a> </li>
+      <li><a href="add_tiposolicitud.php">Tipo solicitud</a> </li>
    </ul>
   </li>
   <li>
@@ -40,9 +49,12 @@
     </a>
   </li>
   <li>
-    <a href="informes.php" >
+    <a href="#" class="submenu-toggle">
       <i class="glyphicon glyphicon-indent-left"></i>
       <span>Informes</span>
     </a>
+    <ul class="nav submenu">
+      <li><a href="informes_recoleccion.php">Recoleccion</a> </li>
+   </ul>
   </li>
 </ul>

@@ -27,18 +27,20 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th class="text-center" style="width: 20%;"> Área </th>
-                <th class="text-center" style="width: 20%;"> Tipo de residuo </th>
-                <th class="text-center" style="width: 20%;"> Peso </th>
-                <th class="text-center" style="width: 20%;"> Usuario </th>
-                <th class="text-center" style="width: 20%;"> Observación </th>
-				 <th class="text-center" style="width: 10%;"> Fecha registro </th>
-                <th class="text-center" style="width: 100px;"> Acciones </th>
+                <th class="text-center" style="width: 50px;">#</th>
+                <th class="text-center" style="width: 10%;"> Área </th>
+                <th class="text-center" style="width: 15%;"> Tipo de residuo </th>
+                <th class="text-center" style="width: 8%;"> Peso </th>
+                <th class="text-center" style="width: 10%;"> Usuario </th>
+                <th class="text-center" style="width: 30%;"> Observación </th>
+				        <th class="text-center" style="width: 10%;"> Fecha registro </th>
+                <th class="text-center" style="width: 6%;"> Acciones </th>
               </tr>
             </thead>
             <tbody>
               <?php foreach ($all_recoleccion as $reco):?>
               <tr>
+                <td class="text-center"><?php echo count_id();?></td>
                 <td class="text-center"> <?php echo remove_junk($reco['area']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($reco['tipo_residuo']); ?></td>
                 <td class="text-center"> <?php echo remove_junk($reco['peso']); ?></td>

@@ -27,14 +27,15 @@ $all_solicitudes= find_all('solicitudes');
         <thead>
           <tr>
             <th class="text-center" style="width: 50px;">#</th>
-            <th class="text-center" style="width: 50px;">Tipo de solicitud </th>
+            <th class="text-center" style="width: 15%;">Tipo de solicitud </th>
 			<th class="text-center" style="width: 10%;">Área</th>
-            <th class="text-center" style="width: 15%;">Usuario</th>
-            <th class="text-center" style="width: 15%;">Descripción</th>
-			<th class="text-center" style="width: 15%;">Prioridad</th>
-			<th class="text-center" style="width: 15%;">Cantidad</th>
-            <th class="text-center" style="width: 10%;">Estado</th>
-            <th class="text-center" style="width: 10%;">Fecha</th>
+            <th class="text-center" style="width: 8%;">Usuario</th>
+            <th class="text-center" style="width: 8%;">Contacto</th>
+            <th class="text-center" style="width: 20%%;">Descripción</th>
+			<th class="text-center" style="width: 50px;">Prioridad</th>
+			<th class="text-center" style="width: 50px;">Cantidad</th>
+            <th class="text-center" style="width: 8%%;">Estado</th>
+            <th class="text-center" style="width: 8%%;">Fecha</th>
             <th class="text-center" style="width: 100px;">Acciones</th>
           </tr>
         </thead>
@@ -42,11 +43,12 @@ $all_solicitudes= find_all('solicitudes');
         <?php foreach($all_solicitudes as $a_solicitud): ?>
           <tr>
            <td class="text-center"><?php echo count_id();?></td>
-		  <td class="text-center"><?php echo remove_junk(ucwords($a_solicitud['tipo_solicitud']))?></td>
-		  <td class="text-center"><?php echo remove_junk(ucwords($a_solicitud['area']))?></td>
-          <td class="text-center"><?php echo remove_junk(ucwords($a_solicitud['usuario']))?></td>
-          <td><?php echo remove_junk(ucwords($a_solicitud['descripcion']))?></td>
-          <td class="text-center">
+		       <td class="text-center"><?php echo remove_junk(ucwords($a_solicitud['tipo_solicitud']))?></td>
+		       <td class="text-center"><?php echo remove_junk(ucwords($a_solicitud['area']))?></td>
+           <td class="text-center"><?php echo remove_junk(ucwords($a_solicitud['usuario']))?></td>
+           <td class="text-center"><?php echo remove_junk(ucwords($a_solicitud['contacto']))?></td>
+           <td><?php echo remove_junk(ucwords($a_solicitud['descripcion']))?></td>
+           <td class="text-center">
            <?php if($a_solicitud['prioridad'] === '1'): ?>
             <span class="label label-success"><?php echo "Media"; ?></span>
            <?php elseif($a_solicitud['prioridad'] === '2'): ?>
