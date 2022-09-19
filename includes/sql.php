@@ -259,14 +259,12 @@ function tableExists($table){
   /*--------------------------------------------------------------*/
   /* Function for Display Recent product Added
   /*--------------------------------------------------------------*/
- function find_recent_product_added($limit){
-   global $db;
-   $sql   = " SELECT p.id,p.name,p.sale_price,p.media_id,c.name AS categorie,";
-   $sql  .= "m.file_name AS image FROM products p";
-   $sql  .= " LEFT JOIN categories c ON c.id = p.categorie_id";
-   $sql  .= " LEFT JOIN media m ON m.id = p.media_id";
-   $sql  .= " ORDER BY p.id DESC LIMIT ".$db->escape((int)$limit);
-   return find_by_sql($sql);
+ function solicitudes_pendientes($limit){
+  global $db;
+  $sql  = "SELECT *";
+  $sql .= "FROM solicitudes WHERE estado = 0";
+  $sql .= " ORDER BY id DESC LIMIT ".$db->escape((int)$limit);
+  return $db->query($sql);
  }
  /*--------------------------------------------------------------*/
  /* Function for Find Highest saleing Product

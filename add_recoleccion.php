@@ -13,11 +13,11 @@
    $req_fields = array('area','tipo_residuo','peso','usuario','observaciones' );
    validate_fields($req_fields);
    if(empty($errors)){
-     $r_area  = remove_junk($db->escape($_POST['area']));
-     $r_residuo   = remove_junk($db->escape($_POST['tipo_residuo']));
+     $r_area  = mb_strtoupper(remove_junk($db->escape($_POST['area'])));
+     $r_residuo   = mb_strtoupper(remove_junk($db->escape($_POST['tipo_residuo'])));
      $r_peso  = remove_junk($db->escape($_POST['peso']));
-     $r_usuario  = remove_junk($db->escape($_POST['usuario']));
-     $r_observacion  = remove_junk($db->escape($_POST['observaciones']));
+     $r_usuario  = mb_strtoupper(remove_junk($db->escape($_POST['usuario'])));
+     $r_observacion  = mb_strtoupper(remove_junk($db->escape($_POST['observaciones'])));
      $r_date    = make_date('d-m-Y');
     
 	 
