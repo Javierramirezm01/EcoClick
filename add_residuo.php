@@ -25,7 +25,7 @@
       $query .=") VALUES (";
       $query .=" '{$resiudo}', '{$material }', '{$colorbolsa}', '{$pretratamiento}', '{$tratamiento}', '{$disposicion}', '{$usuario}','{$r_date}'";
       $query .=")";
-      if($db->query($sql)){
+      if($db->query($query)){
         $session->msg("s", "Residuo agregado exitosamente.");
         redirect('add_residuo.php',false);
       } else {
@@ -99,30 +99,30 @@
           <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th class="text-center" style="width: 50px;">Id</th>
-                    <th class="text-center" style="width: 50px;">Residuo</th>
-                    <th class="text-center" style="width: 50px;">Material</th>
-                    <th class="text-center" style="width: 50px;">Color bolsa</th>
-                    <th class="text-center" style="width: 50px;">Pretratamiento</th>
-                    <th class="text-center" style="width: 50px;">Tratamiento</th>
-                    <th class="text-center" style="width: 50px;">Disposición final</th>
-                    <th class="text-center" style="width: 50px;">Usuario</th>
-                    <th class="text-center" style="width: 50px;">Fecha</th>
-                    <th class="text-center" style="width: 100px;">Acciones</th>
+                    <th class="text-center" style="width: 4%;">Id</th>
+                    <th class="text-center" style="width: 15%;">Residuo</th>
+                    <th class="text-center" style="width: 10%;">Material</th>
+                    <th class="text-center" style="width: 10%;">Color bolsa</th>
+                    <th class="text-center" style="width: 10%;">Pretratamiento</th>
+                    <th class="text-center" style="width: 10%;">Tratamiento</th>
+                    <th class="text-center" style="width: 20%;">Disposición final</th>
+                    <th class="text-center" style="width: 8%;">Usuario</th>
+                    <th class="text-center" style="width: 6%;">Fecha</th>
+                    <th class="text-center" style="width: 4%;">Acciones</th>
                 </tr>
             </thead>
             <tbody>
               <?php foreach ($all_residuos as $resi):?>
                 <tr>
                     <td class="text-center"><?php echo count_id();?></td>
-                    <td><?php echo remove_junk(ucfirst($resi['residuo'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($resi['material'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($resi['color_bolsa'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($resi['pretratamiento'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($resi['tratamiento'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($resi['disposicion_final'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($resi['usuario'])); ?></td>
-                    <td><?php echo remove_junk(ucfirst($resi['fecha'])); ?></td>
+                    <td class="text-center"><?php echo remove_junk(ucfirst($resi['residuo'])); ?></td>
+                    <td class="text-center"><?php echo remove_junk(ucfirst($resi['material'])); ?></td>
+                    <td class="text-center"><?php echo remove_junk(ucfirst($resi['color_bolsa'])); ?></td>
+                    <td class="text-center"><?php echo remove_junk(ucfirst($resi['pretratamiento'])); ?></td>
+                    <td class="text-center"><?php echo remove_junk(ucfirst($resi['tratamiento'])); ?></td>
+                    <td class="text-center"><?php echo remove_junk(ucfirst($resi['disposicion_final'])); ?></td>
+                    <td class="text-center"><?php echo remove_junk(ucfirst($resi['usuario'])); ?></td>
+                    <td class="text-center"><?php echo remove_junk(ucfirst($resi['fecha'])); ?></td>
                     <td class="text-center">
                       <div class="btn-group">
                         <a href="edit_residuo.php?id=<?php echo (int)$resi['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">

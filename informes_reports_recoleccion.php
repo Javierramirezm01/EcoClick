@@ -49,11 +49,12 @@ $results = '';
         <div class="panel-heading clearfix">
          <div class="panel-heading">
           <strong>
-            <span class="glyphicon glyphicon-th"></span>
             <span>Recoleccion residuos</span>
             <?php if(isset($start_date)){ echo $start_date;}?> a <?php if(isset($end_date)){echo $end_date;}?>
+            <button type="submit" name="edit_resi" class="btn btn-success"> <strong> Exportar a Excel </strong></button>
+            <button type="submit" name="edit_resi" class="btn btn-danger"> <strong> Exportar a PDF </strong></button>
          </strong>
-         <a href="home.php" class="btn btn-info pull-right">Volver a menu</a>
+         <a href="admin.php" class="btn btn-info pull-right">Volver a menu</a>
         </div>
 
         </div>
