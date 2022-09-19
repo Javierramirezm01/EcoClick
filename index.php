@@ -26,7 +26,7 @@
             <input type="password" name= "password" class="form-control" placeholder="Contraseña">
         </div>
         <div class="form-group">
-                <button type="submit" class="btn btn-info  pull-right">Entrar</button>
+            <button type="submit" class="btn btn-success  pull-right">Entrar</button>
         </div>
     </form>
 </div>

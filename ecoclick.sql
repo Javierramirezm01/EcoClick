@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-09-2022 a las 23:02:52
+-- Tiempo de generación: 19-09-2022 a las 18:45:35
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -52,7 +52,9 @@ INSERT INTO `recoleccionresiduos` (`id`, `area`, `tipo_residuo`, `peso`, `usuari
 (26, 'Gestion Humana', 'Reciclable', 70, 'Admin Users', 'Sin novedad.', '2022-09-12'),
 (27, 'Gestion Humana', 'Reciclables', 20, 'Admin Users', 'Sin novedad.', '2022-09-12'),
 (28, 'Gestion Humana', 'Ordinarios', 10, 'Admin Users', 'Sin novedad.', '2022-09-12'),
-(29, 'Contabilidad', 'No aprovechables', 50, 'Admin Users', 'Solo se recolecto el 50%.', '2022-09-13');
+(29, 'Contabilidad', 'No aprovechables', 50, 'Admin Users', 'Solo se recolecto el 50%.', '2022-09-13'),
+(30, 'Gestion Humana', 'Reciclables', 25, 'Admin Users', 'Sin novedad.', '2022-09-19'),
+(31, 'GESTION DOCUMENTAL', 'RECICLABLES', 30, 'ADMIN USERS', 'SIN NOVEDAD.', '2022-09-19');
 
 -- --------------------------------------------------------
 
@@ -62,16 +64,15 @@ INSERT INTO `recoleccionresiduos` (`id`, `area`, `tipo_residuo`, `peso`, `usuari
 
 CREATE TABLE `residuos` (
   `id` int(11) NOT NULL,
-  `residuo` varchar(100) NOT NULL
+  `residuo` varchar(100) NOT NULL,
+  `material` varchar(50) NOT NULL,
+  `color_bolsa` varchar(50) NOT NULL,
+  `pretratamiento` varchar(100) NOT NULL,
+  `tratamiento` varchar(100) NOT NULL,
+  `disposicion_final` varchar(200) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `residuos`
---
-
-INSERT INTO `residuos` (`id`, `residuo`) VALUES
-(1, 'Reciclables'),
-(3, 'No aprovechables');
 
 -- --------------------------------------------------------
 
@@ -166,11 +167,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`) VALUES
-(1, 'Admin Users', 'admin', '871b94bfd2bfe0c8b4bbf478eca8b535a18830e0', 1, 'e028ne01.png', 1, '2022-09-13 22:57:47'),
+(1, 'Admin Users', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'iz87appc1.png', 1, '2022-09-19 18:43:21'),
 (2, 'Special User', 'special', 'ba36b97a41e7faf742ab09bf88405ac04f99599a', 2, 'no_image.jpg', 1, '2017-06-16 07:11:26'),
-(3, 'Default User', 'user', '12dea96fec20593566ab75692c9949596833adc9', 3, 'no_image.jpg', 1, '2017-06-16 07:11:03'),
-(12, 'Javier Ramírez Monsalve ', 'jramirezm', '4252ae812b3f6ca195abcbbfb54f848e4d0e70a3', 1, 'no_image.jpg', 1, NULL),
-(13, 'Mateo Cortez Gomes', 'mcortezg', 'c1d6af216686394e9cf1661b7a33a5739f4bf79d', 1, 'no_image.jpg', 1, NULL);
+(3, 'Default User', 'user', '12dea96fec20593566ab75692c9949596833adc9', 3, 'no_image.jpg', 1, '2017-06-16 07:11:03');
 
 -- --------------------------------------------------------
 
@@ -245,7 +244,7 @@ ALTER TABLE `user_groups`
 -- AUTO_INCREMENT de la tabla `recoleccionresiduos`
 --
 ALTER TABLE `recoleccionresiduos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `residuos`
@@ -269,7 +268,7 @@ ALTER TABLE `ubicacion`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `user_groups`
