@@ -96,6 +96,7 @@
           </div>
           
           <div class="form-group">
+          <label for="status">Estado</label>
             <select class="form-control" name="estado">
               <option <?php if($gestor['estado'] === '1') echo 'selected="selected"';?>value="1">Activo</option>
               <option <?php if($gestor['estado'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>

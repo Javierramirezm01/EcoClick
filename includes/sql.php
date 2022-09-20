@@ -357,4 +357,13 @@ function find_by_report($start_date,$end_date) {
      return find_by_sql("SELECT * FROM {$db->escape($table)} WHERE fecha >= '{$db->escape($start_date)}'AND fecha <= '{$db->escape($end_date)}'");
    }
 }
+
+function find_by_status($table) {
+  global $db;
+    $id =1;
+  if(tableExists($table))
+  {
+    return find_by_sql("SELECT * FROM {$db->escape($table)} WHERE estado ='{$db->escape($id)}'");
+  }
+}
 ?>

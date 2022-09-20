@@ -44,6 +44,12 @@
     </a>
   </li>
   <li>
+    <a href="add_entrega.php" >
+      <i class="glyphicon glyphicon-briefcase"></i>
+      <span>Entrega materiales</span>
+    </a>
+  </li>
+  <li>
     <a href="add_solicitud.php" >
       <i class="glyphicon glyphicon-time"></i>
       <span>Registrar solicitudes</span>
