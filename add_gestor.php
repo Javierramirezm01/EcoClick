@@ -139,7 +139,7 @@
                     </td>
                     <td class="text-center">
                       <div class="btn-group">
-                        <a href="edit_residuo.php?id=<?php echo (int)$resi['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
+                        <a href="edit_gestor.php?id=<?php echo (int)$gestores['id'];?>"  class="btn btn-xs btn-warning" data-toggle="tooltip" title="Editar">
                           <span class="glyphicon glyphicon-edit"></span>
                         </a>
                         <a href="delete_gestor.php?id=<?php echo (int)$gestores['id'];?>"  class="btn btn-xs btn-danger" data-toggle="tooltip" title="Eliminar">
