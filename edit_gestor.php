@@ -3,43 +3,43 @@
   require_once('includes/load.php');
   // Checkin What level user has permission to view this page
   page_require_level(1);
-  $recoleccion = find_by_id('recoleccionresiduos',(int)$_GET['id']);
-  $all_estados = find_all('recoleccionresiduos');
-  $all_ubicacion= find_all('ubicacion');
-  $all_usuarios = find_all('users');
-  if(!$recoleccion){
+  $gestor = find_by_id('gestores',(int)$_GET['id']);
+  if(!$gestor){
     $session->msg("d","Missing recoleccion id.");
     redirect('adminrecoleccion.php');
   }
 ?>
 <?php
- if(isset($_POST['edit_recoleccion'])){
-   $req_fields = array('area','tipo_residuo','peso','usuario','observaciones' );
+ if(isset($_POST['edit_gestor'])){
+   $req_fields = array('nit','nombreempresa','representante','direccion','persona','fijo','celular','correo','estado');
    validate_fields($req_fields);
    if(empty($errors)){
-     $r_area  = remove_junk($db->escape($_POST['area']));
-     $r_residuo   = remove_junk($db->escape($_POST['tipo_residuo']));
-     $r_peso  = remove_junk($db->escape($_POST['peso']));
-     $r_usuario  = remove_junk($db->escape($_POST['usuario']));
-     $r_observacion  = remove_junk($db->escape($_POST['observaciones']));
-     $r_date    = make_date('d-m-Y');
+    $nit  = mb_strtoupper(remove_junk($db->escape($_POST['nit'])));
+    $empresa   = mb_strtoupper(remove_junk($db->escape($_POST['nombreempresa'])));
+    $representante  = mb_strtoupper(remove_junk($db->escape($_POST['representante'])));
+    $direccion  = mb_strtoupper(remove_junk($db->escape($_POST['direccion'])));
+    $persona  = mb_strtoupper(remove_junk($db->escape($_POST['persona'])));
+    $fijo  = remove_junk($db->escape($_POST['fijo']));
+    $celular  = mb_strtoupper(remove_junk($db->escape($_POST['celular'])));
+    $correo  = mb_strtoupper(remove_junk($db->escape($_POST['correo'])));
+    $estado  = mb_strtoupper(remove_junk($db->escape($_POST['estado'])));
     
-     $query   = "UPDATE recoleccionresiduos SET";
-     $query  .=" area ='{$r_area}', tipo_residuo ='{$r_residuo}',";
-     $query  .=" peso ='{$r_peso}', usuario ='{$r_usuario}', observaciones ='{$r_observacion}',fecha='{$r_date}'";
-     $query  .=" WHERE id ='{$recoleccion['id']}'";
+     $query   = "UPDATE gestores SET";
+     $query  .=" nit ='{$nit}', nombre_empresa ='{$empresa}',representante ='{$representante}', direccion ='{$direccion}',";
+     $query  .=" persona_contacto ='{$persona}',fijo='{$fijo}',celular='{$celular}',correo='{$correo}',estado='{$estado}'";
+     $query  .=" WHERE id ='{$gestor['id']}'";
      $result = $db->query($query);
              if($result && $db->affected_rows() === 1){
-               $session->msg('s',"La recoleccion ha sido actualizado. ");
-               redirect('adminrecoleccion.php', false);
+               $session->msg('s',"Gestor ha sido actualizado. ");
+               redirect('add_gestor.php', false);
              } else {
                $session->msg('d',' Lo siento, actualización falló.');
-               redirect('edit_recoleccion.php?id='.$recoleccion['id'], false);
+               redirect('edit_gestor.php?id='.$gestor['id'], false);
              }
 
  } else{
      $session->msg("d", $errors);
-     redirect('edit_recoleccion.php?id='.$recoleccion['id'], false);
+     redirect('edit_gestor.php?id='.$gestor['id'], false);
  }
 
  }
@@ -52,59 +52,57 @@
   </div>
 </div>
   <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-7">
       <div class="panel panel-default">
         <div class="panel-heading">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
-            <span>Registrar Recolección</span>
+            <span>Actualizar gestor</span>
          </strong>
         </div>
         <div class="panel-body">
-         <div class="col-md-12">
-          <form method="post" action="edit_recoleccion.php?id=<?php echo (int)$recoleccion['id'] ?>" class="clearfix">
+         <div class="col-md-9">
+          <form method="post" action="edit_gestor.php?id=<?php echo (int)$gestor['id'] ?>" class="clearfix">
           <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
-                    <select class="form-control" name="area">
-                      <option value="">Seleccione Ubicacion</option>
-                    <?php  foreach ($all_ubicacion as $ubi): ?>
-                      <option value="<?php echo (string)$ubi['ubicacion'] ?>">
-                        <?php echo $ubi['ubicacion'] ?></option>
-                    <?php endforeach; ?>
-                    </select>
-                  </div>
-				 </div>
-			  </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
-                <input type="text" class="form-control" name="tipo_residuo" placeholder="Tipo de residuo" required>
-                </div>
-				 </div>
-			  </div>
-			  <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
-                <input type="number" class="form-control" name="peso" placeholder="Ingrese Peso" required>
-                </div>
-				 </div>
-			  </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
-                   <input type="text" class="form-control" id="sug_input" name="usuario" value="<?php echo remove_junk($user['name']); ?>" readonly>
-                   </div>
-				 </div>
-			  </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
-                <input type="text" class="form-control" name="observaciones" placeholder="Observacion" required>
-                </div>
-				 </div>
-			  </div>
-              <button type="submit" name="edit_recoleccion" class="btn btn-danger">Actualizar Recoleccion</button>
+           <input type="text" class="form-control" name="nit" value="<?php echo remove_junk(ucfirst($gestor['nit']));?>">
+          </div>
+
+          <div class="form-group">
+           <input type="text" class="form-control" name="nombreempresa" value="<?php echo remove_junk(ucfirst($gestor['nombre_empresa']));?>">
+          </div>
+
+          <div class="form-group">
+           <input type="text" class="form-control" name="representante" value="<?php echo remove_junk(ucfirst($gestor['representante']));?>">
+          </div>
+
+          <div class="form-group">
+           <input type="text" class="form-control" name="direccion" value="<?php echo remove_junk(ucfirst($gestor['direccion']));?>">
+          </div>
+
+          <div class="form-group">
+           <input type="text" class="form-control" name="persona" value="<?php echo remove_junk(ucfirst($gestor['persona_contacto']));?>">
+          </div>
+
+          <div class="form-group">
+           <input type="text" class="form-control" name="fijo" value="<?php echo remove_junk(ucfirst($gestor['fijo']));?>">
+          </div>
+
+          <div class="form-group">
+           <input type="text" class="form-control" name="celular" value="<?php echo remove_junk(ucfirst($gestor['celular']));?>">
+          </div>
+
+          <div class="form-group">
+           <input type="text" class="form-control" name="correo" value="<?php echo remove_junk(ucfirst($gestor['correo']));?>">
+          </div>
+          
+          <div class="form-group">
+            <select class="form-control" name="estado">
+              <option <?php if($gestor['estado'] === '1') echo 'selected="selected"';?>value="1">Activo</option>
+              <option <?php if($gestor['estado'] === '0') echo 'selected="selected"';?> value="0">Inactivo</option>
+            </select>
+          </div>
+
+          <button type="submit" name="edit_gestor" class="btn btn-success">Actualizar Recoleccion</button>
           </form>
          </div>
         </div>
