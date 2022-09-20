@@ -14,13 +14,13 @@
    validate_fields($req_fields);
 
    if(empty($errors)){
-		$tipo   = remove_junk($db->escape($_POST['tiposolicitud']));
-        $area   = remove_junk($db->escape($_POST['area']));
-        $usuario   = remove_junk($db->escape($_POST['usuario']));
-        $contacto   = remove_junk($db->escape($_POST['contacto']));
-	    $descripcion   = remove_junk($db->escape($_POST['descripcion']));
+		    $tipo   = mb_strtoupper(remove_junk($db->escape($_POST['tiposolicitud'])));
+        $area   = mb_strtoupper(remove_junk($db->escape($_POST['area'])));
+        $usuario   = mb_strtoupper(remove_junk($db->escape($_POST['usuario'])));
+        $contacto   = mb_strtoupper(remove_junk($db->escape($_POST['contacto'])));
+	      $descripcion   = mb_strtoupper(remove_junk($db->escape($_POST['descripcion'])));
         $prioridad   = remove_junk($db->escape($_POST['prioridad']));
-		$cantidad   = remove_junk($db->escape($_POST['cantidad']));
+		    $cantidad   = remove_junk($db->escape($_POST['cantidad']));
         $s_date    = make_date('d-m-Y');
 
         $query = "INSERT INTO solicitudes (";

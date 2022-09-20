@@ -10,7 +10,7 @@
  if(isset($_POST['add_ub'])){
    $req_field = array('ubicacion');
    validate_fields($req_field);
-   $ub_name = remove_junk($db->escape($_POST['ubicacion']));
+   $ub_name = mb_strtoupper(remove_junk($db->escape($_POST['ubicacion'])));
    if(empty($errors)){
       $sql  = "INSERT INTO ubicacion (ubicacion)";
       $sql .= " VALUES ('{$ub_name}')";

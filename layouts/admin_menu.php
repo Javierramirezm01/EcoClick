@@ -23,6 +23,8 @@
     <ul class="nav submenu">
       <li><a href="adminrecoleccion.php">Recoleccion</a> </li>
       <li><a href="solicitudes.php">Solicitudes</a> </li>
+      <li><a href="add_residuo.php">Materiales</a> </li>
+      <li><a href="add_gestor.php">Gestores</a> </li>
    </ul>
   </li>
   <li>
@@ -32,7 +34,6 @@
     </a>
     <ul class="nav submenu">
       <li><a href="add_ubicacion.php">Ubicaciones</a> </li>
-      <li><a href="add_residuo.php">Residuos</a> </li>
       <li><a href="add_tiposolicitud.php">Tipo solicitud</a> </li>
    </ul>
   </li>
