@@ -55,7 +55,7 @@
         <div class="panel-heading">
           <strong>
             <span class="glyphicon glyphicon-th"></span>
-            <span>Registrar gestor</span>
+            <span>Registrar gestor externo</span>
          </strong>
         </div>
         <div class="panel-body">
@@ -98,7 +98,7 @@
       <div class="panel-heading">
         <strong>
           <span class="glyphicon glyphicon-th"></span>
-          <span>Lista de gestores</span>
+          <span>Lista de gestores externos</span>
        </strong>
       </div>
         <div class="panel-body">

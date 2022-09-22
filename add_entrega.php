@@ -49,7 +49,7 @@
   </div>
 </div>
   <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
           <strong>
@@ -58,11 +58,9 @@
          </strong>
         </div>
         <div class="panel-body">
-         <div class="col-md-12">
+         <div class="col-md-9">
           <form method="post" action="add_entrega.php" class="clearfix">
           <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
                     <select class="form-control" name="gestor">
                       <option value="">Seleccione gestor</option>
                     <?php  foreach ($gestores as $gestor): ?>
@@ -70,12 +68,8 @@
                         <?php echo $gestor['nombre_empresa'] ?></option>
                     <?php endforeach; ?>
                     </select>
-                  </div>
-				       </div>
 			        </div>
               <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
                     <select class="form-control" name="residuo">
                       <option value="">Seleccione tipo de residuo</option>
                     <?php  foreach ($materiales as $resi): ?>
@@ -83,12 +77,8 @@
                         <?php echo $resi['residuo'] ?></option>
                     <?php endforeach; ?>
                     </select>
-                  </div>
-				       </div>
 			        </div>
               <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
                     <select class="form-control" name="material">
                       <option value="">Seleccione material</option>
                     <?php  foreach ($materiales as $material): ?>
@@ -96,36 +86,18 @@
                         <?php echo $material['material'] ?></option>
                     <?php endforeach; ?>
                     </select>
-                  </div>
-				       </div>
 			        </div>
               <div class="form-group">
-                <div class="row">
-                  <div class="col-md-6">
                     <input type="number" class="form-control" name="peso" placeholder="Ingrese Peso" required>
-                  </div>
-                </div>
               </div>
         <div class="form-group">
-          <div class="row">
-            <div class="col-md-6">
               <input type="text" class="form-control" id="sug_input" name="usuario" value="<?php echo remove_junk($user['name']); ?>" readonly>
-            </div>
-				  </div>
 			  </div>
         <div class="form-group">
-          <div class="row">
-            <div class="col-md-6">
                 <input type="text" class="form-control" name="responsablerecibido" placeholder="Responsable de recolección" required>
-            </div>
-				  </div>
 			  </div>
         <div class="form-group">
-          <div class="row">
-            <div class="col-md-6">
                 <input type="text" class="form-control" name="observaciones" placeholder="Observacion" required>
-            </div>
-				  </div>
 			  </div>
               <button type="submit" name="add_entrega" class="btn btn-success">Registrar Entrega</button>
           </form>

@@ -21,10 +21,11 @@
       <span>Administración</span>
     </a>
     <ul class="nav submenu">
-      <li><a href="adminrecoleccion.php">Recoleccion</a> </li>
+      <li><a href="adminrecoleccion.php">Recoleccion de residuos</a> </li>
+      <li><a href="adminentregas.php">Entrega de residuos</a> </li>
       <li><a href="solicitudes.php">Solicitudes</a> </li>
       <li><a href="add_residuo.php">Materiales</a> </li>
-      <li><a href="add_gestor.php">Gestores</a> </li>
+      <li><a href="add_gestor.php">Gestores externos</a> </li>
    </ul>
   </li>
   <li>
@@ -40,13 +41,13 @@
   <li>
     <a href="add_recoleccion.php" >
       <i class="glyphicon glyphicon-leaf"></i>
-      <span>Recolección</span>
+      <span>Recolección de residuo</span>
     </a>
   </li>
   <li>
     <a href="add_entrega.php" >
       <i class="glyphicon glyphicon-briefcase"></i>
-      <span>Entrega materiales</span>
+      <span>Entrega de residuos</span>
     </a>
   </li>
   <li>
@@ -61,7 +62,7 @@
       <span>Informes</span>
     </a>
     <ul class="nav submenu">
-      <li><a href="informes_recoleccion.php">Recoleccion</a> </li>
+      <li><a href="informes_recoleccion.php">Recoleccion de residuo</a> </li>
    </ul>
   </li>
 </ul>
