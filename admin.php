@@ -65,10 +65,12 @@
       </div>
     </div>
 </div>
+
+
 <div class="row">
    <div class="col-md-6">
      <div class="panel panel-default">
-       <div class="panel-heading">
+        <div class="panel-heading">
          <strong>
            <span>Ultimas Solicitudes pendientes</span>
          </strong>
@@ -78,22 +80,20 @@
           <thead>
            <tr>
            <tr>
-           <th>Id</th>
-             <th>Tipo de solicitud</th>
-             <th>Área</th>
-             <th>Usuario</th>
-             <th>Prioridad</th>
-             <th>Estado</th>
-             <th>Fecha</th>
+           <th class="text-center" style="width: 4%;">Id</th>
+             <th class="text-center" style="width: 16%;">Solicitud</th>
+             <th class="text-center" style="width: 16%;">Área</th>
+             <th class="text-center" style="width: 4%;">Prioridad</th>
+             <th class="text-center" style="width: 10%;">Estado</th>
+             <th class="text-center" style="width: 12%;">Fecha</th>
            <tr>
           </thead>
           <tbody>
             <?php foreach ($solicitudes_pendientes as  $solicitud): ?>
               <tr>
-                <td><?php echo remove_junk(first_character($solicitud['id'])); ?></td>
-                <td><?php echo remove_junk(first_character($solicitud['tipo_solicitud'])); ?></td>
-                <td><?php echo remove_junk(first_character($solicitud['area'])); ?></td>
-                <td><?php echo remove_junk(first_character($solicitud['usuario'])); ?></td>
+                <td class="text-center"><?php echo remove_junk(first_character($solicitud['id'])); ?></td>
+                <td class="text-center"><?php echo remove_junk(first_character($solicitud['tipo_solicitud'])); ?></td>
+                <td class="text-center"><?php echo remove_junk(first_character($solicitud['area'])); ?></td>
                 <td class="text-center">
                   <?php if($solicitud['prioridad'] === '1'): ?>
                     <span class="label label-success"><?php echo "Media"; ?></span>
@@ -115,9 +115,9 @@
             <?php endforeach; ?>
           <tbody>
          </table>
-       </div>
-     </div>
-   </div>
+        </div>
+      </div>
+  </div>
 
    <div class="col-md-6">
      <div class="panel panel-default">
@@ -134,8 +134,6 @@
              <th>Área</th>
              <th>Tipo de residuo</th>
              <th>Cantidad</th>
-             <th>Usuario</th>
-             <th>Fecha</th>
            <tr>
           </thead>
           <tbody>
@@ -145,8 +143,6 @@
                 <td><?php echo remove_junk(first_character($recoleccion['area'])); ?></td>
                 <td><?php echo remove_junk(first_character($recoleccion['tipo_residuo'])); ?></td>
                 <td><?php echo remove_junk(first_character($recoleccion['peso'])); ?></td>
-                <td><?php echo remove_junk(first_character($recoleccion['usuario'])); ?></td>
-                <td><?php echo remove_junk(first_character($recoleccion['fecha'])); ?></td>
               </tr>
             <?php endforeach; ?>
           <tbody>

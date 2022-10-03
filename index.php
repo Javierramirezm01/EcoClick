@@ -4,15 +4,14 @@
   if($session->isUserLoggedIn(true)) { redirect('home.php', false);}
 ?>
 
+<div class="text-left">
+  <img src="uploads\products\icono.png"/>
+</div>
 <div class="text-center">
-  <br/>
-  <br/>
-  <img src="uploads\products\logoPrincipal.png"/>
+  <img src="uploads\products\inicio.png"/>
 </div>
 <div class="login-page">
     <div class="text-center">
-       <h3>Bienvenido a EcoClick sistema ambiental</h3>
-      <br/>
        <p>Iniciar sesión </p>
      </div>
      <?php echo display_msg($msg); ?>
@@ -32,3 +31,8 @@
 </div>
 <?php include_once('layouts/footer.php'); ?>
 <?php include_once('layouts/header.php'); ?>
+<style>
+  body{
+    background: #24BA82;
+  }
+</style>
