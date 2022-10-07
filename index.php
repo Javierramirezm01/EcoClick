@@ -4,16 +4,19 @@
   if($session->isUserLoggedIn(true)) { redirect('home.php', false);}
 ?>
 
+<br>
+<br>
 <div class="text-left">
-  <img src="uploads\products\icono.png"/>
+  <img src="uploads\products\iconoFondo.png"/>
 </div>
-<div class="text-center">
-  <img src="uploads\products\inicio.png"/>
+<div  class="log">
+      <img src="uploads\products\inicio-b.png"/>
 </div>
 <div class="login-page">
-    <div class="text-center">
-       <p>Iniciar sesión </p>
+    <div class="text-left">
+       <p><strong>Iniciar sesión<strong></p>
      </div>
+     <br>
      <?php echo display_msg($msg); ?>
       <form method="post" action="auth.php" class="clearfix">
         <div class="form-group">
@@ -33,6 +36,16 @@
 <?php include_once('layouts/header.php'); ?>
 <style>
   body{
-    background: #24BA82;
+    background-image: url("https://blog.signaturit.com/hubfs/13-banner-blog-blockchain.jpg");
+    /*background: transparent*/;
+    
+  }
+  .text-left{
+    padding: 0 20px;
+  }
+  .log{
+    margin: 5% auto;
+    padding: 0 550px;
+    position: absolute;
   }
 </style>
